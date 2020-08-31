@@ -2,10 +2,9 @@ var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
     name: String,
-    experience: Number,
-    cohort: String,
+    googleId: String,
     avatar: String,
-    googleId: String
+    experience: Number,
 }, {
     timestamps: true
 });
