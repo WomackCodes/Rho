@@ -5,9 +5,9 @@ var userSchema = new mongoose.Schema({
     googleId: String,
     team: String,
     avatar: String,
-    experience: Number,
 }, {
     timestamps: true
+
 });
 
 module.exports = mongoose.model('User', userSchema);
