@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const portfolioSchema = new Schema({
-    balance: {
-        type: Number,
-    }, 
-    asOf: {
-        type: Date,
-        default: function() {
-            return new Date(new Date().setFullYear(new Date().getFullYear() + 1));
-        }, 
-    },
-    security: [securitySchema],
-}, {
-    timestamps: true,
-});
-
 const securitySchema = new Schema({
     asset: {
         type: String,
@@ -25,6 +10,21 @@ const securitySchema = new Schema({
     purchaseDate: {
         type: Date,
     },
+}, {
+    timestamps: true,
+});
+
+const portfolioSchema = new Schema({
+    cash: {
+        type: Number,
+    }, 
+    asOf: {
+        type: Date,
+        default: function() {
+            return new Date();
+        }, 
+    },
+    security: [securitySchema],
 }, {
     timestamps: true,
 });
