@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-router.get('/', function(req, res, next) {
-  res.redirect('/users', { title: 'Rho' });
+router.get('/', function(req, res) {
+  res.redirect('/users');
 });
 
 // Google OAuth login route
