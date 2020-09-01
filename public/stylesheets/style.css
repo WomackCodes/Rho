@@ -1,9 +1,12 @@
 body {
+  display: flex;
+  justify-content: center;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: orange;
+  color: #e98b26;
+  background-color: rgb(13, 45, 2);
 }
 
 a {
-  color: #00B7FF;
+  color: #e99e4e;
 }

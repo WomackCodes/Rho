@@ -1,18 +1,20 @@
-const Security = require('../models/security');
+// const Security = require('../models/security');
 const Portfolio = require('../models/portfolio');
 
 module.exports = {
     index,
-    buy,
-    sell,
+    // new: newPosition,
+    // create,
+    // delete: deletePosition,
+    // update,
 }
 
-function getTime() {
-    let tradeTime = new Security();
-    let dt = tradeTime.time
-    let tradeDate = dt.toISOString().slice(0, 16);
-    return tradeDate;
-}
+// function getTime() {
+//     let tradeTime = new Security();
+//     let dt = tradeTime.time
+//     let tradeDate = dt.toISOString().slice(0, 16);
+//     return tradeDate;
+// }
 
 function index(req, res) {
     Portfolio.find({}, function(err, portfolios) {
@@ -20,13 +22,13 @@ function index(req, res) {
     });
 }
 
-function buy (req, res) {
-    res.render('securities/show', {title: 'Buy Security', tradeDate: getTime()});
-}
+// function buy (req, res) {
+//     res.render('securities/show', {title: 'Buy Security', tradeDate: getTime()});
+// }
 
-function sell(req, res) {
-    Security.findByIdAndDelete(req.params.id, function(err) {
-        res.redirect('/portfolios')
-    })
-    res.render('securities/show', { title: 'Sell Security', tradeDate: getTime() });
-}
+// function sell(req, res) {
+//     Security.findByIdAndDelete(req.params.id, function(err) {
+//         res.redirect('/portfolios')
+//     })
+//     res.render('securities/show', { title: 'Sell Security', tradeDate: getTime() });
+// }

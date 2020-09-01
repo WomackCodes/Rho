@@ -5,7 +5,6 @@ module.exports = {
 };
 
 function index(req, res, next) {
-    console.log(res);
     // Make the query object to use with User.find based on if
     // the user has submitted the search form or now
     // let modelQuery = req.query.name ? { name: new RegExp(req.query.name, 'i') } : {};

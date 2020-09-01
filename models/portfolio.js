@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const securitySchema = new Schema({
+const securitySchema = new mongoose.Schema({
     asset: {
         type: String,
         enum: ['Stock', 'ETF', 'Mutual Fund', 'Bond', 'Call', 'Put'],
@@ -14,7 +13,7 @@ const securitySchema = new Schema({
     timestamps: true,
 });
 
-const portfolioSchema = new Schema({
+const portfolioSchema = new mongoose.Schema({
     cash: {
         type: Number,
     }, 
