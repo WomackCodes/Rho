@@ -1,16 +1,8 @@
 <%- include('../partials/header') %>
 
-<body>
-    <h1>Welcome to Rho</h1>
-    <p>Making sense of the stock market</p>
-    <button>Log in to check portfolio</button>
-
-    <br><br><br>
-    <div>
-        <section>Indexes</section>
-        <section>Gold</section>
-        <section>Oil</section>
-    </div>
-</body>
-
-</html>
+<form action="/user/<%=portfolioID%>/securities" method="POST">
+    <label> THIS IS PORTFOLIOS/INDEX.EJS
+        <input name="price" type="number" min="0" max="400" step="20">
+    </label>
+    <button type="submit" class="submit-button"> TEST Add Stock</button>
+</form>
