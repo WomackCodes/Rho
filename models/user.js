@@ -7,9 +7,6 @@ const userSchema = new mongoose.Schema({
     googleID: {
         type: String
     },
-    team: {
-        type: String
-    },
     avatar: {
         type: String
     },

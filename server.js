@@ -20,8 +20,9 @@ require('./config/passport');
 
 // require our routes
 var indexRoutes = require('./routes/index');
-var usersRoutes = require('./routes/users');
 var portfoliosRoutes = require('./routes/portfolios');
+var securitiesRoutes = require('./routes/securities');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,8 +47,8 @@ app.use(passport.session());
 
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
-app.use('/', usersRoutes);
-app.use('/', portfoliosRoutes);
+app.use('/portfolios', portfoliosRoutes);  // for all routes in portfolios router, prefix all routes with "/portfolios"
+app.use('/securities', securitiesRoutes);
 
 // invalid request, send 404 page
 app.use(function (req, res) {

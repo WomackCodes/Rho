@@ -24,6 +24,7 @@ const portfolioSchema = new mongoose.Schema({
         }, 
     },
     security: [securitySchema],
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {
     timestamps: true,
 });

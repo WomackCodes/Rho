@@ -1,7 +1,11 @@
 // const Security = require('../models/security');
 const Portfolio = require('../models/portfolio');
+const request = require('request');
+const token = process.env.TRADIER_TOKEN;
+const rootURL = 'https://sandbox.tradier.com/v1/';
 
 module.exports = {
+    show,
     index,
     // new: newPosition,
     // create,
@@ -16,9 +20,14 @@ module.exports = {
 //     return tradeDate;
 // }
 
+function show(req, res) {
+    Portfolio.findById(req.params.id, function(err, portfolio) {
+        res.render('portfolios/show', {portfolio, title: 'Portfolio'})
+    });
+}
 function index(req, res) {
-    Portfolio.find({}, function(err, portfolios) {
-        res.render('portfolios/index', {portfolios, title: 'Portfolios'})
+    Portfolio.find({}, function (err, portfolios) {
+        res.render('portfolios/index', { portfolios, title: 'Portfolios' })
     });
 }
 

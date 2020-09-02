@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
+<%- include('./partials/header') %>
 <body>
-  <h1>Welcome to Rho</h1>
-  <p>Making sense of the stock market</p>
-  <button>Log in to check portfolio</button>
-
-  <br><br><br>
-  <div>
-    <section>Indexes</section>
-    <section>Gold</section>
-    <section>Oil</section>
-  </div>
+  <div>Markets Simplified</div>
+  <section>
+    <ul class="center">
+      <li>
+        <% if (user) { %>
+        <a href="/portfolios"><i class="material-icons center">trending_flat</i>View Portfolio</a>
+        <% } else { %>
+        <a href=""></a>
+        <% } %>
+      </li>
+    </ul>
+    <ul class="center">
+      <li>
+        <% if (user) { %>
+        <a href="/logout"><i class="material-icons center">trending_flat</i>Log Out</a>
+        <% } else { %>
+        <a href="/auth/google"><i class="material-icons center">vpn_key</i>Login with Google</a>
+        <% } %>
+      </li>
+    </ul>
+  </section>
 </body>
 
 </html>

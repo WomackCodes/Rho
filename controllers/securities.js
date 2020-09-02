@@ -1,5 +1,5 @@
-const Security = require('..models/securities/show')
-const Trade = require('../models/securities/trade')
+const BASE_URL = 'https://cloud.iexapis.com/stable/stock';
+const request = require('request');
 
 module.exports = {
     show, 
@@ -17,9 +17,13 @@ module.exports = {
 // }
 
 function show(req, res) {
-    Security.find({}, function (err, securities) {
-        res.render('securities/show', { securities, title: 'Securities' })
+    let url = `${BASE_URL}/${req.params.id}/quote?token=${process.env.IEX_TOKEN}`;
+    request(url, function (error, response, body) {
+        let parsed = JSON.parse(body);
+        res.render('securities/show', { quote: parsed, title: 'Securities' })
     });
+    // Security.find({}, function (err, securities) {
+    // });
 }
 
 // function newFlight(req, res) {
