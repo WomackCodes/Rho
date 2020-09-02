@@ -1,15 +1,11 @@
-// const Security = require('../models/security');
 const Portfolio = require('../models/portfolio');
 const request = require('request');
-const token = process.env.TRADIER_TOKEN;
-const rootURL = 'https://sandbox.tradier.com/v1/';
 
 module.exports = {
     show,
     index,
     new: newPortfolio,
     create,
-    // delete: deletePosition,
     // update,
 }
 
@@ -20,13 +16,17 @@ module.exports = {
 //     return tradeDate;
 // }
 function newPortfolio(req, res) { 
-    res.render('portfolios/new', { portfolios, title: 'Portfolios' });
+    res.render('portfolios/new', { portfolios, title: 'New Portfolio' });
 }
 
 function create(req, res) {
-    Portfolio.find({}, function (err, portfolios) {
-        res.render('portfolios/index', { portfolios, title: 'Portfolios' })
-    });
+    let portfolio = new Portfolio(req.body);
+    portfolio.save(function (err) {
+        if (err) {
+            return res.render('portfolios/new', { title: 'New Portfolio'});
+        }
+        res.redirect('/portfolios');
+    })
 }
 
 function show(req, res) {
@@ -39,14 +39,3 @@ function index(req, res) {
         res.render('portfolios/index', { portfolios, title: 'Portfolios' })
     });
 }
-
-// function buy (req, res) {
-//     res.render('securities/show', {title: 'Buy Security', tradeDate: getTime()});
-// }
-
-// function sell(req, res) {
-//     Security.findByIdAndDelete(req.params.id, function(err) {
-//         res.redirect('/portfolios')
-//     })
-//     res.render('securities/show', { title: 'Sell Security', tradeDate: getTime() });
-// }

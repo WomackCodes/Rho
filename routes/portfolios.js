@@ -4,7 +4,7 @@ const portfoliosCtrl = require('../controllers/portfolios');
 
 router.get('/', portfoliosCtrl.index);
 router.get('/:id', portfoliosCtrl.show);
-// router.get('/new', portfoliosCtrl.new);
-// router.post('/', portfoliosCtrl.create);
+router.get('/new', portfoliosCtrl.new);
+router.post('/', portfoliosCtrl.create);
 
 module.exports = router;

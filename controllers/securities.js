@@ -1,5 +1,7 @@
 const BASE_URL = 'https://cloud.iexapis.com/stable/stock';
 const request = require('request');
+const token = process.env.TRADIER_TOKEN;
+const rootURL = 'https://sandbox.tradier.com/v1/';
 
 module.exports = {
     show, 
