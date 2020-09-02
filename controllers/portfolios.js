@@ -7,8 +7,8 @@ const rootURL = 'https://sandbox.tradier.com/v1/';
 module.exports = {
     show,
     index,
-    // new: newPosition,
-    // create,
+    new: newPortfolio,
+    create,
     // delete: deletePosition,
     // update,
 }
@@ -19,6 +19,15 @@ module.exports = {
 //     let tradeDate = dt.toISOString().slice(0, 16);
 //     return tradeDate;
 // }
+function newPortfolio(req, res) { 
+    res.render('portfolios/new', { portfolios, title: 'Portfolios' });
+}
+
+function create(req, res) {
+    Portfolio.find({}, function (err, portfolios) {
+        res.render('portfolios/index', { portfolios, title: 'Portfolios' })
+    });
+}
 
 function show(req, res) {
     Portfolio.findById(req.params.id, function(err, portfolio) {

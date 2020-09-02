@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     avatar: {
         type: String
     },
+    portfolio: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 }, {
     timestamps: true
 });

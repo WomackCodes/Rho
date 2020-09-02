@@ -2,10 +2,66 @@
 
 <%- include('../partials/header') %>
 
-<form action="portfolios/securities" method="POST">
-    <label> THIS IS PORTFOLIOS/SHOW.EJS
-        <input name="price" type="number" min="0" max="400" step="20">
-    </label>
-    <button type="submit" class="submit-button"> TEST Add Stock</button>
-</form>
+<wrapper id='portfolio-grid'>
+    <div>Cash Available</div>
+    <div>$10,000.00</div>
+    <div>Market Value Total</div>
+    <div>$10,000.00</div>
+    <div>Balance as of 09/01/2020</div>
+</wrapper>
 
+
+<% if (portfolio.security.length > 0) { %>
+<h1>Positions</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Underlying</th>
+            <th>Count</th>
+            <th>Trade Date</th>
+            <th>Current Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% portfolio.security.sort((a, b) => a.security.asset - b.security.asset) %>
+        <% portfolio.security.forEach((asset) => { %>
+        <tr>
+            <td><%=security.asset%></td>
+            <td><%=security.count%></td>
+            <td><%=security.purchaseDate%></td>
+            <td><%=security.purchasePrice%></td>
+            <td>
+                <form action="/securities<%= asset._id %>?_method=DELETE" method="POST">
+                    <button class="red-button" type="submit">Sell</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<% } %>
+
+<h1>Add Stocks</h1>
+<form method="POST" action="/portfolios/<%= portfolio._id %>/securities">
+    <label for="security">Security
+        <select name="asset">
+            <% if (portfolio.security !== "CVS" && security.asset.filter(e => e.asset === 'CVS').length === 0) { %>
+            <option value="CVS">CVS</option>
+            <% } %>
+            <% if (portfolio.security !== "AAPL" && security.asset.filter(e => e.asset === 'AAPL').length === 0) { %>
+            <option value="AAPL">AAPL</option>
+            <% } %>
+            <% if (portfolio.security !== "WORK" && security.asset.filter(e => e.asset === 'WORK').length === 0) { %>
+            <option value="WORK">WORK</option>
+            <% } %>
+            <% if (portfolio.security !== "TSLA" && security.asset.filter(e => e.asset === 'TSLA').length === 0) { %>
+            <option value="TSLA">TSLA</option>
+            <% } %>
+            <% if (portfolio.security !== "SPY" && security.asset.filter(e => e.asset === 'SPY').length === 0) { %>
+            <option value="SPY">SPY</option>
+            <% } %>
+        </select>
+    </label>
+    <button class="submit-button" type="submit">Submit</button>
+</form>
