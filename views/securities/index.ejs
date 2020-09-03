@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+<wrapper>
+    <input type="text">
+    <br>
+    <div><%= quote.companyName %></div>
+    <div>Latest Price</div>
+    <div><%= quote.latestPrice %></div>
+</wrapper>
+
+<form action="" method="POST">
+    <button type="submit" class="submit-button"> Buy Stock</button>
+</form>
+
+<form action="" method="POST">
+    <button type="submit" class="submit-button"> Sell Stock</button>
+</form>
+
+<%- include('../partials/footer') %>
