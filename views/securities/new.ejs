@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<form action="/securities/show" method="GET">
+    <select name="portfolio" id="">
+        <% portfolios.forEach(portfolio => { %>
+            <option value="<%= portfolio._id %>"><%=portfolio.name%></option>
+        <% }); %>
+    </select>
+    <div>
+        <input name="stock"type="text" placeholder="Search stocks">
+    </div>
+</form>
+
+
+
+<%- include('../partials/footer') %>

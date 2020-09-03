@@ -1,5 +1,10 @@
 <%- include('../partials/header') %>
 
-hi im portfolios index
+<% portfolios.forEach(portfolio => { %>
+    <div>
+        <%= portfolio %> 
+    </div>
+<% }); %>
+
 
 <%- include('../partials/footer') %>
