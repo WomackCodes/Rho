@@ -4,9 +4,6 @@ const securitySchema = new mongoose.Schema({
     asset: {
         type: String,
     }, 
-    purchaseDate: {
-        type: Date,
-    },
     count: {
         type: Number,
     },

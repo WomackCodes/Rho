@@ -48,7 +48,7 @@ app.use(passport.session());
 // mount all routes with appropriate base paths
 app.use('/', indexRoutes);
 app.use('/portfolios', portfoliosRoutes);  // for all routes in portfolios router, prefix all routes with "/portfolios"
-app.use('/securities', securitiesRoutes);
+app.use('/', securitiesRoutes);
 
 // invalid request, send 404 page
 app.use(function (req, res) {

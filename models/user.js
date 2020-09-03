@@ -4,13 +4,12 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String
     },
-    googleID: {
+    googleId: {
         type: String
     },
     avatar: {
         type: String
     },
-    portfolio: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 }, {
     timestamps: true
 });

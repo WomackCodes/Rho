@@ -6,7 +6,7 @@ module.exports = {
     show, 
     new: newStock,
     create, 
-    delete: deleteSell,
+    delete: deleteStock,
 }
 
 function show(req, res) {
@@ -22,24 +22,24 @@ function show(req, res) {
 }
 
 function newStock(req, res) {
-    console.log(req.user);
-    Portfolio.find({user: req.user._id}, function(err, portfolios){
-        if (err) console.log(err);
-        console.log(portfolios);
+    Portfolio.find({user: req.user.id}, function(err, portfolios){
         res.render('securities/new', { portfolios, title: 'New Security' });
     });
 }
 
 function create(req, res) {
-    let security = new Security(req.body);
-    security.save(function (err) {
-        if (err) {
-            return res.render('securities/new', { title: 'New Security' });
-        }
-        res.redirect('/portfolios');
-    })
+Portfolio.findById(req.params.id, function(err, portfolio) {
+    let totalCost = parseFloat(req.body.count) * parseFloat(req.body.purchasePrice);
+    if (totalCost <= portfolio.cash) {
+        portfolio.cash = portfolio.cash - totalCost;
+        portfolioSchema.security.push(req.body);
+    } else { 
+        res.redirect('/securities/new');
+    };
+});
 }
-function deleteSell(req, res) {
+
+function deleteStock(req, res) {
     Portfolio.findByIdAndDelete(req.params.id, function (err) {
         Security.remove({ flight: req.params.id }, function (err) {
             res.redirect('/securities');

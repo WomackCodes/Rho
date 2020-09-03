@@ -22,4 +22,7 @@
     </ul>
   </section>
 
-<%- include('./partials/footer') %>
+  <span>Create a portfolio and start learning by logging in with Google!</span>
+    <% if (user) { %>
+      <%- include('./partials/footer') %>
+    <% } %>
