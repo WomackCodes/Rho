@@ -5,7 +5,7 @@ module.exports = {
     show, 
     new: newBuy,
     create, 
-    // delete: deleteSell,
+    delete: deleteSell,
 }
 
 function show(req, res) {
@@ -29,10 +29,10 @@ function create(req, res) {
         res.redirect('/portfolios');
     })
 }
-// function deleteSell(req, res) {
-//     Portfolio.findByIdAndDelete(req.params.id, function (err) {
-//         Security.remove({ flight: req.params.id }, function (err) {
-//             res.redirect('/securities');
-//         });
-//     });
-// }
+function deleteSell(req, res) {
+    Portfolio.findByIdAndDelete(req.params.id, function (err) {
+        Security.remove({ flight: req.params.id }, function (err) {
+            res.redirect('/securities');
+        });
+    });
+}

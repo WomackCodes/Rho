@@ -18,9 +18,13 @@ const securitySchema = new mongoose.Schema({
 });
 
 const portfolioSchema = new mongoose.Schema({
+    name: String,
     cash: {
         type: Number,
         default: 10000,
+    },
+    marketValue: {
+        type: Number,
     }, 
     asOf: {
         type: Date,

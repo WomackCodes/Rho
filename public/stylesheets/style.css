@@ -1,12 +1,106 @@
+:root {
+  /* color palette */
+  --color-grey-light: #3F3F4A;
+  --color-grey-dark: #36353F;
+  --color-button-primary: #3C405A;
+  --color-button-text: #4F63AC;
+  --color-white: #fff;
+
+  /* heights & widths */
+  --height-header: 69px;
+  --height-footer-nav: 100px;
+}
+
+/* ----- Global Element Overrides -----*/
+a { color: var(--color-white); }
+
+ul { list-style: none; }
+
+/* ----- Header ----- */
+
+header.app-header {
+  width: 100%;
+  height: var(--height-header);
+  background: var(--color-grey-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo { font-size: 40px; }
+
 body {
   display: flex;
   justify-content: center;
-  padding: 50px;
+  margin-top: var(--height-header);
+  margin-bottom: var(--height-footer-nav);
+  padding: 25px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #e98b26;
-  background-color: rgb(13, 45, 2);
+  background: var(--color-grey-dark);
+  color: var(--color-white);
+  max-width: 900px;
 }
 
-a {
-  color: #e99e4e;
+/* ----- Footer Nav Bar ----- */
+
+.nav-bar {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--height-footer-nav);
+  background: var(--color-grey-light);
+}
+
+ul.nav-items {
+  list-style: none; /* gets rid of bullet point */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+a.nav-item-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 25%;
+}
+
+li.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.nav-item-link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.nav-item-link:hover {
+  background: var(--color-grey-dark);
+  cursor: pointer;
+}
+
+.icon-wrapper {
+  background: var(--color-grey-dark);
+  padding: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-button-text);
+}
+
+li i {
+  font-size: 1.3em;
 }

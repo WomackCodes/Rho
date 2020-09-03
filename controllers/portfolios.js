@@ -1,4 +1,5 @@
 const Portfolio = require('../models/portfolio');
+const BASE_URL = 'https://cloud.iexapis.com/stable/stock';
 const request = require('request');
 
 module.exports = {
@@ -16,9 +17,11 @@ function index(req, res) {
 }
 
 function newPortfolio(req, res) { 
-    Portfolio.find({}, function (err, portfolios) {
-    res.render('portfolios/new', { portfolios, title: 'New Portfolio' });
-});
+    let url = `${BASE_URL}/${req.query.stock}/quote?token=${process.env.IEX_TOKEN}`;
+    request(url, function (error, response, body) {
+        let parsed = JSON.parse(body);
+        res.render('portfolios/new', { quote: parsed, title: 'New Portfolio' });
+    });
 }
 
 function create(req, res) {
