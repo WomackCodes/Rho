@@ -1,12 +1,12 @@
 <%- include('../partials/header') %>
 
-<form class="newPortfolio" action="/portfolios" method="POST">
-    <label for="Position">New Position:
-        <select name="trade">
-            <option value="Buy">Buy</option>
-            <option value="Sell">Sell</option>
-        </select>
-    </label>
+<form class="newPortfolio" action="/securities" method="GET">
+    <label for="Position">New Position</label>
+    <input name="stock" type="text" placeholder="Search for stock">
+    <!-- <select name="trade">
+        <option value="Buy">Buy</option>
+        <option value="Sell">Sell</option>
+    </select> -->
     <button class="submit-button" type="submit">Submit</button>
 </form>
 

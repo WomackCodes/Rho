@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const securitySchema = new mongoose.Schema({
     asset: {
         type: String,
-        enum: ['CVS', 'AAPL', 'WORK', 'TSLA', 'SPY'],
     }, 
     purchaseDate: {
         type: Date,
@@ -21,7 +20,7 @@ const securitySchema = new mongoose.Schema({
 const portfolioSchema = new mongoose.Schema({
     cash: {
         type: Number,
-        balance: 10000,
+        default: 10000,
     }, 
     asOf: {
         type: Date,

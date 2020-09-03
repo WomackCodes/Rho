@@ -1,8 +1,16 @@
 <%- include('../partials/header') %>
 
-<form action="/user/<%=portfolioID%>/securities" method="POST">
-    <label> THIS IS THE SECURITIES/SHOW.EJS
-        <input name="price" type="number" min="0" max="400" step="20">
-    </label>
+<div><%= quote.companyName %></div>
+
+<div>Latest Price</div>
+<div><%= quote.latestPrice %></div>
+
+<form action="" method="POST">
     <button type="submit" class="submit-button"> TEST Add Stock</button>
 </form>
+
+<form action="" method="POST">
+    <button type="submit" class="submit-button"> TEST Add Stock</button>
+</form>
+
+<%- include('../partials/footer') %>

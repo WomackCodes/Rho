@@ -9,14 +9,16 @@ module.exports = {
     // update,
 }
 
-// function getTime() {
-//     let tradeTime = new Security();
-//     let dt = tradeTime.time
-//     let tradeDate = dt.toISOString().slice(0, 16);
-//     return tradeDate;
-// }
+function index(req, res) {
+    Portfolio.find({}, function (err, portfolios) {
+        res.render('portfolios/index', { portfolios, title: 'Portfolios' })
+    });
+}
+
 function newPortfolio(req, res) { 
+    Portfolio.find({}, function (err, portfolios) {
     res.render('portfolios/new', { portfolios, title: 'New Portfolio' });
+});
 }
 
 function create(req, res) {
@@ -34,8 +36,11 @@ function show(req, res) {
         res.render('portfolios/show', {portfolio, title: 'Portfolio'})
     });
 }
-function index(req, res) {
-    Portfolio.find({}, function (err, portfolios) {
-        res.render('portfolios/index', { portfolios, title: 'Portfolios' })
-    });
-}
+
+
+// function getTime() {
+    //     let tradeTime = new Security();
+//     let dt = tradeTime.time
+//     let tradeDate = dt.toISOString().slice(0, 16);
+//     return tradeDate;
+// }
