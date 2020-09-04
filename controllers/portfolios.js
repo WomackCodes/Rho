@@ -7,12 +7,13 @@ module.exports = {
     index,
     new: newPortfolio,
     create,
+    delete: deletePortfolio,
     // update,
 }
 
 function index(req, res) {
-    Portfolio.find({}, function (err, portfolios) {
-        res.render('portfolios/index', { portfolios, title: 'Portfolios' })
+    Portfolio.find({}, function (err, portfolio) {
+        res.render('portfolios/index', { portfolio, title: 'Portfolios' })
     });
 }
 // function index(req, res) {
@@ -22,20 +23,25 @@ function index(req, res) {
 // }; 
 
 function newPortfolio(req, res) { 
-    res.render('portfolios/new', { title: 'Portfolio'});
+    res.render('portfolios/new', { title: 'Portfolio', portfolio: false});
 }
 
 
 function create (req, res) {
     req.body.user = req.user._id;
-    Portfolio.create(req.body, function(err, portfolio){
-        res.redirect(`/portfolios/${portfolio._id}`);
+    Portfolio.create(req.body, function(err, portfolios){
+        res.redirect(`/portfolios/${portfolios._id}`);
     });
 }
 
 function show(req, res) {
     Portfolio.findOne({user: req.user._id}, function(err, portfolio) {
-        console.log(portfolio);
         res.render('portfolios/show', {portfolio, title: 'Portfolio'})
     });
 }
+
+function deletePortfolio(req, res) {
+    Portfolio.findByIdAndDelete(req.params.id, function (err) {
+        res.redirect('/portfolios');
+    });
+};

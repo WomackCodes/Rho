@@ -6,7 +6,7 @@ router.get('/', portfoliosCtrl.index);
 router.get('/new', portfoliosCtrl.new);
 router.get('/:id', portfoliosCtrl.show);
 router.post('/', portfoliosCtrl.create);
-// router.delete('/:id', portfolioCtrl.delete);
+router.delete('/:id', portfoliosCtrl.delete);
 // router.get('/:id/edit', portfolioCtrl.edit);
 // router.put('/:id', portfolioCtrl.update);
 

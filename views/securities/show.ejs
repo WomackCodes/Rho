@@ -6,7 +6,7 @@
 </wrapper>
 
 <div>Cash Balance</div>
-<div><%= portfolio.cash %></div>
+<div><%= portfolios.cash %></div>
 
 <form action="/portfolios/<%= portfolio._id %>/securities" method="POST">
     <input hidden type="string" name="asset" value="<%=quote.companyName%>">

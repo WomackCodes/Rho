@@ -11,28 +11,30 @@ module.exports = {
 
 function show(req, res) {
     Portfolio.findById(req.query.portfolio, function(err, portfolio) {
-        if (err) console.log(err);
-        console.log(portfolio);
         let url = `${BASE_URL}/${req.query.stock}/quote?token=${process.env.IEX_TOKEN}`;
         request(url, function (error, response, body) {
             let parsed = JSON.parse(body);
-            res.render('securities/show', { quote: parsed, title: 'Securities', portfolio })
+            res.render('securities/show', { quote: parsed, title: 'Securities', portfolio, portfolios: true })
         });
     });
 }
 
 function newStock(req, res) {
-    Portfolio.find({user: req.user.id}, function(err, portfolios){
-        res.render('securities/new', { portfolios, title: 'New Security' });
+    Portfolio.find({user: req.user.id}, function(err, portfolio){
+        res.render('securities/new', { portfolio, title: 'New Security'});
     });
 }
 
 function create(req, res) {
 Portfolio.findById(req.params.id, function(err, portfolio) {
-    let totalCost = parseFloat(req.body.count) * parseFloat(req.body.purchasePrice);
+    let totalCost = parseInt(req.body.count) * parseFloat(req.body.purchasePrice);
+    console.log(req.body);
     if (totalCost <= portfolio.cash) {
         portfolio.cash = portfolio.cash - totalCost;
-        portfolioSchema.security.push(req.body);
+        portfolio.security.push(req.body);
+        portfolio.save(function(err){
+            res.render('portfolios/show', { portfolio, title: 'Portfolio', portfolios: true });
+        });
     } else { 
         res.redirect('/securities/new');
     };

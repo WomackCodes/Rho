@@ -29,7 +29,7 @@ const portfolioSchema = new mongoose.Schema({
             return new Date();
         }, 
     },
-    security: [securitySchema],
+    security: {type: [securitySchema]},
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {
     timestamps: true,

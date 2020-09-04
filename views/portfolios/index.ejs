@@ -1,10 +1,30 @@
 <%- include('../partials/header') %>
 
-<% portfolios.forEach(portfolio => { %>
+<% portfolio.forEach(portfolio => { %>
     <div>
         <%= portfolio %> 
     </div>
 <% }); %>
 
+  <% if (portfolio.length > 0) { %>
+    <table style="width:100%">
+            <tr>
+              <th>Portfolio Name</th>
+              <th>Market Value</th>
+            </tr>
+            <tr><% portfolio.forEach(function(portfolio) { %>
+                <td><%= portfolio.name %></td>
+                <td><%= portfolio.marketValue %></td>
+                <td>
+                  <form action="/portfolios/<%=portfolio._id%>?_method=DELETE" method="POST">
+                    <button class="red-button" type="submit">X</button>
+                  </form>
+              </td>
+            </tr>
+            <%})%>
+          </table>
+    <% } else {%>
+      <h1>You Don't Have A Portfolio Yet</h1>
+      <% } %>
 
 <%- include('../partials/footer') %>
