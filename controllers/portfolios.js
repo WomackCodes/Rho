@@ -3,12 +3,12 @@ const BASE_URL = 'https://cloud.iexapis.com/stable/stock';
 const request = require('request');
 
 module.exports = {
-    show,
     index,
+    show,
     new: newPortfolio,
     create,
     delete: deletePortfolio,
-    // update,
+    update,
 }
 
 function index(req, res) {
@@ -16,16 +16,19 @@ function index(req, res) {
         res.render('portfolios/index', { portfolio, title: 'Portfolios' })
     });
 }
-// function index(req, res) {
-//     Book.find({ 'user': req.user._id }, function (err, books) {
-//         res.render('books/index', { title: 'your books', books });
-//     });
-// }; 
+
+function show(req, res) {
+    Portfolio.findOne({user: req.user._id}, function(err, portfolio) {
+    if (err) {
+        res.redirect('portfolios/new');
+    } else {
+        res.render('portfolios/show', {portfolio, title: 'Portfolio'})};
+    });
+}
 
 function newPortfolio(req, res) { 
     res.render('portfolios/new', { title: 'Portfolio', portfolio: false});
 }
-
 
 function create (req, res) {
     req.body.user = req.user._id;
@@ -34,14 +37,15 @@ function create (req, res) {
     });
 }
 
-function show(req, res) {
-    Portfolio.findOne({user: req.user._id}, function(err, portfolio) {
-        res.render('portfolios/show', {portfolio, title: 'Portfolio'})
-    });
-}
 
 function deletePortfolio(req, res) {
     Portfolio.findByIdAndDelete(req.params.id, function (err) {
         res.redirect('/portfolios');
+    });
+};
+
+function update(req, res) {
+    Portfolio.findByIdAndUpdate(req.params.id, function (err) {
+        res.redirect(`/portfolios/${portfolios._id}`);
     });
 };

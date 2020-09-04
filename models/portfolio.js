@@ -23,11 +23,8 @@ const portfolioSchema = new mongoose.Schema({
     marketValue: {
         type: Number,
     }, 
-    asOf: {
-        type: Date,
-        default: function() {
-            return new Date();
-        }, 
+    tradeNotes: {
+        type: String,
     },
     security: {type: [securitySchema]},
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
