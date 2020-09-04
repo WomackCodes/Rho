@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
-
-<% portfolio.forEach(portfolio => { %>
-<div>
-    <%= portfolio %>
-</div>
-<% }); %>
-
+<ul>
+    <% portfolio.forEach(portfolio => { %>
+        <li>
+            <% portfolio %>
+        </li>
+    <% }); %>
+</ul>
 <% if (portfolio.length > 0) { %>
 <wrapper id='portfolio-grid'>
     <div>Cash Available</div>

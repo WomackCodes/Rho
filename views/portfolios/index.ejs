@@ -24,7 +24,10 @@
             <%})%>
           </table>
     <% } else {%>
-      <h1>You Don't Have A Portfolio Yet</h1>
+      <h2>You don't have a portfolio yet!</h2>
+      <br>
+      <h3>That's OK, we'll help you make one.</h3> 
+      
         <a class="nav-item-link" href="portfolios/new">
             <li class="nav-item newPortLink">
                 <span class="icon-wrapper">
@@ -33,7 +36,10 @@
                 <span class="nav-item-name">New Portfolio</span>
             </li>
         </a>
-    <% let noPortfolio = true;%>         
+      
+        <br>
+        <h4>Click above!</h4>
+    <% let noPortfolio = true %>         
       <% } %>
 
 <%- include('../partials/footer') %>

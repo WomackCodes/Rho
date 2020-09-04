@@ -28,7 +28,6 @@ function newStock(req, res) {
 function create(req, res) {
 Portfolio.findById(req.params.id, function(err, portfolio) {
     let totalCost = parseInt(req.body.count) * parseFloat(req.body.purchasePrice);
-    console.log(req.body);
     if (totalCost <= portfolio.cash) {
         portfolio.cash = portfolio.cash - totalCost;
         portfolio.security.push(req.body);

@@ -4,6 +4,7 @@
   --color-grey-dark: #36353F;
   --color-button-primary: #3C405A;
   --color-button-text: #4F63AC;
+  --color-button-new: #00a72f;
   --color-white: #fff;
 
   /* heights & widths */
@@ -108,9 +109,9 @@ li i {
   font-size: 1.3em;
 }
 
-.nav-item .newPortLink {
-  color: var(--color-white);
+.newPortLink {
+  color: var(--color-button-new);
   text-decoration: none;
-  font-size: 20px;
-  padding-top: 5px;
+  font-size: 30px;
+  padding-top: 20px;
 }
