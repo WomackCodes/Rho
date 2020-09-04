@@ -29,6 +29,7 @@ Heroku link to app: (https://rhomarkets.herokuapp.com/)
 * Mongoose ODM
 * Express
 * Node.js
+* Passport
 * 3rd Party API for market data = IEX Cloud [Check out IEX Cloud Site](https://iexcloud.io/docs/api/#stock-prices)
 
 
