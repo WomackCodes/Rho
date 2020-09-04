@@ -16,9 +16,16 @@
                 <td><%= portfolio.name %></td>
                 <td><%= portfolio.marketValue %></td>
                 <td>
+                  <% if (portfolio.user.equals(user._id)) { %> 
                   <form action="/portfolios/<%=portfolio._id%>?_method=DELETE" method="POST">
                     <button class="red-button" type="submit">X</button>
                   </form>
+
+                  <form action="/portfolios/<%=portfolio._id%>?_method=PUT" method="POST">
+                    <input placeholder="Edit Name" name="name" type="text">
+                    <button class="red-button" type="submit">Submit</button>
+                  </form>
+                  <%}%>
               </td>
             </tr>
             <%})%>

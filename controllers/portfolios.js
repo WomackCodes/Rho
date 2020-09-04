@@ -13,7 +13,7 @@ module.exports = {
 
 function index(req, res) {
     Portfolio.find({}, function (err, portfolio) {
-        res.render('portfolios/index', { portfolio, title: 'Portfolios' })
+        res.render('portfolios/index', { portfolio, user: req.user, title: 'Portfolios' })
     });
 }
 
@@ -22,7 +22,7 @@ function show(req, res) {
     if (err) {
         res.redirect('portfolios/new');
     } else {
-        res.render('portfolios/show', {portfolio, title: 'Portfolio'})};
+        res.render('portfolios/show', { portfolio, user: req.user, title: 'Portfolio'})};
     });
 }
 
@@ -45,7 +45,10 @@ function deletePortfolio(req, res) {
 };
 
 function update(req, res) {
-    Portfolio.findByIdAndUpdate(req.params.id, function (err) {
-        res.redirect(`/portfolios/${portfolios._id}`);
+    Portfolio.findById(req.params.id, function (err, portfolio) {
+        portfolio.name = req.body.name;
+        portfolio.save(function(err) {
+            res.redirect(`/portfolios`);
+        });
     });
 };

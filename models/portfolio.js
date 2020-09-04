@@ -23,10 +23,7 @@ const portfolioSchema = new mongoose.Schema({
     marketValue: {
         type: Number,
     }, 
-    tradeNotes: {
-        type: String,
-    },
-    security: {type: [securitySchema]},
+    security: [securitySchema],
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 }, {
     timestamps: true,
