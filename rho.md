@@ -51,7 +51,7 @@ The goal for this app was to create a fully functional web app with CRUD out of 
 
 ## Wireframe:
 
-<img src="https://dribbble.com/shots/6451417-Investment-App-Darkmode/attachments/1380362" width="500">
+<img src="https://i.imgur.com/eTTsyUB.png" width="500">
 
 
 ### _Resources Used:_
