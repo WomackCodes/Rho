@@ -3,7 +3,7 @@
 
 
 
-##  💲💲  Welcome to "Rho - Markets Simplifie"  💲💲
+##  💲💲  Welcome to "Rho - Markets Simplified"  💲💲
 
 
 ### _What the app looks like:_
@@ -14,7 +14,10 @@
 
 ### _Getting started:_
 
-The goal for this app was to create a fully functional web app with CRUD out of "MEN" stack programming languages.  Rho is named after a "thoeretical greek" which is responsible for a portion of the pricing in derivatives of underlying securities like stocks.  The intent with the overall app is to allow the user to experience the stock market and consume a 3rd Party API to provide market data for free! 
+The goal for this project was to create a fully functional web app with CRUD out of "MEN" stack programming languages.  Rho is named after a "thoeretical greek" which is responsible for a portion of the pricing in derivatives of underlying securities like stocks.  The intent with the overall app is to allow the user to experience the stock market and consume a 3rd Party API to provide market data for free! Check out the link via Heroku below:
+
+Heroku link to app: (https://rhomarkets.herokuapp.com/)
+
 
 ### _Technologies Used:_ 
 
