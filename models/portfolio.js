@@ -18,7 +18,7 @@ const portfolioSchema = new mongoose.Schema({
     name: String,
     cash: {
         type: Number,
-        default: 10000,
+        default: 1000,
     },
     marketValue: {
         type: Number,
